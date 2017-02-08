@@ -10,38 +10,40 @@
     <!-- Added a link to Bootstrap-->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
 
+    <script src="assets/javascript/game.js"></script>
+
 </head>
 <body>
 
-<!-- Jumbotron for Title -->
-<div class="jumbotron">
-    <h1 class="text-center">Hangman</h1>
-    <h3 class="text-center">Pokemon Hangman!</h3>
-</div>
+    <!-- Jumbotron for Title -->
+    <div class="jumbotron">
+        <h1 class="text-center">Hangman</h1>
+        <h3 class="text-center">Pokemon Hangman!</h3>
+    </div>
 
-<div class="container">
+    <div class="container">
 
-    <div class="row">
+        <div class="row">
 
-        <!-- Calculator Panel -->
-        <div class="col-lg-4">
+            <!-- Hangman Panel -->
+            <div class="col-lg-4">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Who's That Pokemon?</h3>
+                    </div>
+                    <div class="panel-body">
+                        <img src="assets/images/bulbasaur.png" class="img-responsive" alt="bulbasaur" width="400" height="400">
+                  </div>
+
+
+              </div>
+          </div>
+
+          <!-- Word Panel -->
+          <div class="col-lg-8">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    <h3 class="panel-title">Hangman</h3>
-                </div>
-                <div class="panel-body">
-                    Panel Content
-                </div>
-
-
-            </div>
-        </div>
-
-        <!-- Result Panel -->
-        <div class="col-lg-8">
-        <div class="panel panel-default">
-                <div class="panel-heading">
-                    <h3 class="panel-title">Result</h3>
+                    <h3 class="panel-title">Guess</h3>
                 </div>
                 <div class="panel-body">
                     Panel Content
@@ -51,6 +53,8 @@
         </div>
     </div>
 </div>
+
+
 
 
 </body>
