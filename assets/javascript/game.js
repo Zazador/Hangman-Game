@@ -1,11 +1,17 @@
 $(document).ready(function(){
 
-	var pokemon = ["bulbasaur","ivysaur","venusaur","charmander","charmeleon","charizard",
+	var wordbank = ["bulbasaur","ivysaur","venusaur","charmander","charmeleon","charizard",
 	"squirtle","wartortle","blastoise"]
 
-	$(".number").on("click", function() {
-		alert("hi");
+	var word = wordbank[Math.floor(Math.random()*9)];
 
+	$(document).keypress(function(e) {
+		console.log(word);
+		for (var i = 0; i < word.length; i++) {
+			if (e.which == word.charCodeAt(i)) {
+				alert("oh shit");
+			}
+		}
 	});
 
 });
