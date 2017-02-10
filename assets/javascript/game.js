@@ -7,6 +7,9 @@ $(document).ready(function(){
 	var word = wordbank[Math.floor(Math.random()*wordbank.length)];
 	var currentGuess = "";
 	var lives = 10;
+	//build arrays for correct and incorrect letters
+	var correctLetters = [];
+	var wrongLetters = [];
 
 	//For testing purposes
 	$("#title").append(word);
@@ -20,18 +23,14 @@ $(document).ready(function(){
 		$("#word-body").append("_ ");
 	}
 
-	//build arrays for correct and incorrect letters
-	var correctLetters = [];
-	var wrongLetters = [];
-
 	//build string of underscores
 	var blankWordString = blankWord.join(" ");
-	//console.log(blankWordString);
 
 	//display hint image
 	$("#hintImage").attr('src', "assets/images/" + word + ".jpg");
 	$("#hintImage").attr('alt', word + " image");
 
+	//Check if presses letter is in word
 	$(document).keypress(function(e) {
 		var tracker = false;
 		for (var i = 0; i < word.length; i++) {
@@ -43,41 +42,37 @@ $(document).ready(function(){
 			} 
 		}
 
+		//Append incorrect letter and check if out of lives
 		if (!tracker) {
 			wrongLetters.push(word.charAt(i));
 			$("#incorrect-letters").append(String.fromCharCode(e.which) + " ");
 			lives--;
 			$("#lives-remaining").text(lives);
 			if (lives == 0) {
-				alert("Game Over!");
+				alert("You lose!");
 			}
 		}
 	});
 
+	//Function to append current guess to HTML
 	function rebuildWord(char) {
 
 		var underscore = ' _ ';
 		var currentGuess = "";
 
 		for (var i = 0; i < word.length; i++) {
-			console.log("Current char is: " + word.charAt(i));
 			if (word.charAt(i) === char) {
-				console.log("Current char is equal to test.");
 				currentGuess += char;
 				currentGuess += " ";
 			} else if (correctLetters.includes(word.charAt(i))) {
-				console.log("Current char is equal to a previously correct letter");
 				currentGuess += word.charAt(i);
 				currentGuess += " ";
 			}
 			else {
-				console.log("Current char is an underscore");
 				currentGuess += underscore;
 			}
 		}
 		blankWordString = currentGuess;
-		console.log("bws: " + blankWordString);
-		console.log("cg: " + currentGuess);
 	}
 
 });
