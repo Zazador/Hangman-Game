@@ -1,10 +1,9 @@
 $(document).ready(function(){
 
 	//variables
-	var wordbank = ["test"];
+	var wordbank = ["test", "cat", "dog", "elephant", "dinosaur"];
 	var blankWord = [];
-	// var word = wordbank[Math.floor(Math.random()*9)];
-	var word = wordbank[0];
+	var word = wordbank[Math.floor(Math.random()*wordbank.length)];
 	var currentGuess = "";
 
 	//For testing purposes
@@ -28,7 +27,6 @@ $(document).ready(function(){
 
 		for (var i = 0; i < word.length; i++) {
 			if (e.which == word.charCodeAt(i)) {
-				//console.log(word.charAt(i));
 				correctLetters.push(word.charAt(i));
 				rebuildWord(word.charAt(i));
 				$("#word-body").text(blankWordString);
