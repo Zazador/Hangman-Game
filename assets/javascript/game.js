@@ -24,6 +24,9 @@ $(document).ready(function(){
 	var blankWordString = blankWord.join(" ");
 	//console.log(blankWordString);
 
+	//display hint image
+	$("#hintImage").attr('src', "assets/images/" + word + ".jpg");
+
 	$(document).keypress(function(e) {
 
 		for (var i = 0; i < word.length; i++) {
