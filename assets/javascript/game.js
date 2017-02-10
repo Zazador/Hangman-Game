@@ -48,15 +48,11 @@ $(document).ready(function(){
 			$("#incorrect-letters").append(String.fromCharCode(e.which) + " ");
 			lives--;
 			$("#lives-remaining").text(lives);
+			if (lives == 0) {
+				alert("Game Over!");
+			}
 		}
-		checkLives();
 	});
-
-	function checkLives() {
-		if (lives == 0) {
-			alert("Game Over!");
-		}
-	};
 
 	function rebuildWord(char) {
 
