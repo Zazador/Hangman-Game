@@ -1,7 +1,8 @@
 $(document).ready(function(){
 
 	//variables
-	var wordbank = ["test", "cat", "dog", "elephant", "dinosaur"];
+	var wordbank = ["johanna", "muradin", "illidan", "valla", "falstad", "leoric",
+	"diablo", "chen", "zagara", "arthas"];
 	var blankWord = [];
 	var word = wordbank[Math.floor(Math.random()*wordbank.length)];
 	var currentGuess = "";
