@@ -6,6 +6,7 @@ $(document).ready(function(){
 	var blankWord = [];
 	var word = wordbank[Math.floor(Math.random()*wordbank.length)];
 	var currentGuess = "";
+	var lives = 10;
 
 	//For testing purposes
 	$("#title").append(word);
@@ -26,15 +27,23 @@ $(document).ready(function(){
 
 	//display hint image
 	$("#hintImage").attr('src', "assets/images/" + word + ".jpg");
+	$("#hintImage").attr('alt', word + " image");
 
 	$(document).keypress(function(e) {
-
+		var tracker = false;
 		for (var i = 0; i < word.length; i++) {
 			if (e.which == word.charCodeAt(i)) {
 				correctLetters.push(word.charAt(i));
 				rebuildWord(word.charAt(i));
 				$("#word-body").text(blankWordString);
-			}
+				tracker = true;
+			} 
+		}
+
+		if (!tracker) {
+			wrongLetters.push(word.charAt(i));
+			$("#incorrect-letters").append(String.fromCharCode(e.which) + " ");
+			lives--;
 		}
 	});
 
