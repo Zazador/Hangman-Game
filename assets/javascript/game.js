@@ -11,6 +11,9 @@ $(document).ready(function(){
 	//For testing purposes
 	$("#title").append(word);
 
+	//Initial amount of lives
+	$("#lives-remaining").text(lives);
+
 	//build array of underscores, and append to HTML
 	for (var i = 0; i < word.length; i++) {
 		blankWord.push('_');
@@ -44,8 +47,16 @@ $(document).ready(function(){
 			wrongLetters.push(word.charAt(i));
 			$("#incorrect-letters").append(String.fromCharCode(e.which) + " ");
 			lives--;
+			$("#lives-remaining").text(lives);
 		}
+		checkLives();
 	});
+
+	function checkLives() {
+		if (lives == 0) {
+			alert("Game Over!");
+		}
+	};
 
 	function rebuildWord(char) {
 
