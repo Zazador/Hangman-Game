@@ -43,6 +43,7 @@ $(document).ready(function(){
 				$("#word-body").text(blankWordString);
 				tracker = true;
 				if (blankWordString.replace(/ /g, '') === word) {
+					wins++;
 					rebuildGame();
 				}
 			} 
@@ -55,7 +56,7 @@ $(document).ready(function(){
 			lives--;
 			$("#lives-remaining").text(lives);
 			if (lives == 0) {
-				location.reload();
+				rebuildGame();
 			}
 		}
 	});
@@ -88,7 +89,6 @@ $(document).ready(function(){
 			location.reload();
 		}
 
-		wins ++;
 		$("#wins").text(wins);
 
 		blankWord = [];
