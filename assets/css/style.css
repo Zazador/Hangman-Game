@@ -1,5 +1,9 @@
-.jumbotron {
-	background: url('assets/images/banner.png');
+.jumbotron{
+    background: url("../images/background.jpg")
+}
+
+body {
+	background-image: url("../images/background.jpg")
 }
 
 #hintImage {
@@ -8,4 +12,19 @@
 
 .panel-title {
 	font-size: 20px;
+}
+
+#title {
+	position: relative;
+    background: url("../images/banner.png") center center;
+    background-repeat: no-repeat;
+    width: 100%;
+    min-height: 203px;
+    overflow: hidden;
+}
+
+#text-title {
+	font-size: 50px;
+	color: white;
+    text-shadow: -3px 0 black, 0 3px black, 3px 0 black, 0 -3px black;
 }
