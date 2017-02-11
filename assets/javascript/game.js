@@ -1,5 +1,6 @@
 $(document).ready(function(){
 
+
 	//variables
 	var wordbank = ["johanna", "muradin", "illidan", "valla", "falstad", "leoric",
 	"diablo", "chen", "zagara", "arthas"];
@@ -10,9 +11,6 @@ $(document).ready(function(){
 	//build arrays for correct and incorrect letters
 	var correctLetters = [];
 	var wrongLetters = [];
-
-	//For testing purposes
-	$("#title").append(word);
 
 	//Initial amount of lives
 	$("#lives-remaining").text(lives);
@@ -39,6 +37,9 @@ $(document).ready(function(){
 				rebuildWord(word.charAt(i));
 				$("#word-body").text(blankWordString);
 				tracker = true;
+				if (blankWordString.replace(/ /g, '') === word) {
+					rebuildGame();
+				}
 			} 
 		}
 
@@ -49,7 +50,7 @@ $(document).ready(function(){
 			lives--;
 			$("#lives-remaining").text(lives);
 			if (lives == 0) {
-				alert("You lose!");
+				location.reload();
 			}
 		}
 	});
@@ -58,7 +59,8 @@ $(document).ready(function(){
 	function rebuildWord(char) {
 
 		var underscore = ' _ ';
-		var currentGuess = "";
+		var currentGuess= "";
+
 
 		for (var i = 0; i < word.length; i++) {
 			if (word.charAt(i) === char) {
@@ -73,6 +75,10 @@ $(document).ready(function(){
 			}
 		}
 		blankWordString = currentGuess;
+	}
+
+	function rebuildGame() {
+		alert("you win");
 	}
 
 });
