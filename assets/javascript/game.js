@@ -5,15 +5,20 @@ $(document).ready(function(){
 	var wordbank = ["johanna", "muradin", "illidan", "valla", "falstad", "leoric",
 	"diablo", "chen", "zagara", "arthas"];
 	var blankWord = [];
-	var word = wordbank[Math.floor(Math.random()*wordbank.length)];
+	var globalIndex = 0;
+	var word = wordbank[globalIndex];
 	var currentGuess = "";
 	var lives = 10;
 	//build arrays for correct and incorrect letters
 	var correctLetters = [];
 	var wrongLetters = [];
+	var wins = 0;
 
 	//Initial amount of lives
 	$("#lives-remaining").text(lives);
+
+	//Initial wins
+	$("#wins").text(wins);
 
 	//build array of underscores, and append to HTML
 	for (var i = 0; i < word.length; i++) {
@@ -78,7 +83,44 @@ $(document).ready(function(){
 	}
 
 	function rebuildGame() {
-		alert("you win");
+		globalIndex++;
+		if (globalIndex === 10) {
+			location.reload();
+		}
+
+		wins ++;
+		$("#wins").text(wins);
+
+		blankWord = [];
+		word = wordbank[globalIndex];
+		currentGuess = "";
+		lives = 10;
+		//build arrays for correct and incorrect letters
+		correctLetters = [];
+		wrongLetters = [];
+
+		//Initial amount of lives
+		$("#lives-remaining").text(lives);
+
+		//Reset incorrect letters
+		$("#incorrect-letters").empty();
+
+		//Reset current hero
+		$("#word-body").empty();
+
+		//build array of underscores, and append to HTML
+		for (var i = 0; i < word.length; i++) {
+			blankWord.push('_');
+			$("#word-body").append("_ ");
+		}
+
+		//build string of underscores
+		blankWordString = blankWord.join(" ");
+
+		//display hint image
+		$("#hintImage").attr('src', "assets/images/" + word + ".jpg");
+		$("#hintImage").attr('alt', word + " image");
+
 	}
 
 });
